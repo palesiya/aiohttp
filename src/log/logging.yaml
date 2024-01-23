@@ -12,21 +12,21 @@ handlers:
     formatter: simple
     stream: ext://sys.stdout
 
-    info_file:
-      class: logging.handlers.RotatingFileHandler
-      formatter: json
-      level: INFO
-      filename: .log/info.log
-      maxBytes: 1024
-      backupCount: 3
+  info_file:
+    class: logging.handlers.RotatingFileHandler
+    formatter: json
+    level: INFO
+    filename: .log/info.log
+    maxBytes: 1024
+    backupCount: 3
 
-    error_file:
-      class: logging.handlers.RotatingFileHandler
-      level: ERROR
-      formatter: json
-      filename: .log/error.log
-      maxBytes: 1024
-      backupCount: 3
+  error_file:
+    class: logging.handlers.RotatingFileHandler
+    level: ERROR
+    formatter: json
+    filename: .log/error.log
+    maxBytes: 1024
+    backupCount: 3
 
 loggers:
   dev:
