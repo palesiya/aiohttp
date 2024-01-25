@@ -351,6 +351,21 @@ files = [
 ]
 
 [[package]]
+name = "controller"
+version = "0.6.5"
+description = "Url controller."
+optional = false
+python-versions = "*"
+files = []
+develop = false
+
+[package.source]
+type = "git"
+url = "https://gitlab.com/xolloo/aiohttp_controller.git"
+reference = "HEAD"
+resolved_reference = "b57bf266336193465ed3a4d74bd74d555bc90bcd"
+
+[[package]]
 name = "devtools"
 version = "0.12.2"
 description = "Python's missing debug print command, and more."
@@ -1138,4 +1153,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "e661da992d9b1b775700423fe667a90689070a53c4b47c7d3e52f01d2d8d0a16"
+content-hash = "99e4d88e147ea5f6eec1385e31466de3575fb716a95b7b0f9a88508c7bdbc86e"

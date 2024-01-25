@@ -1,8 +1,6 @@
 from pathlib import Path
-from src.aihttp.conf import settings
 
-
-settings.BASE_DIR = Path(__file__).parent.parent.absolute()
+BASE_DIR = Path(__file__).parent.parent.absolute()
 
 DEBUG = True
 if DEBUG:
@@ -10,6 +8,25 @@ if DEBUG:
 else:
     LOGGER = "prod"
 
-DATABASE = {}
+DATABASE = DB_CONFIG = {
+    "connections": {
+        "default": {
+            "engine": "tortoise.backends.asyncpg",
+            "credentials": {
+                "host": "@format {this.DB_HOST}",
+                "port": "@format {this.DB_PORT}",
+                "user": "@format {this.DB_USER}",
+                "password": "@format {this.DB_PASS}",
+                "database": "@format {this.DB_NAME}",
+            },
+        }
+    },
+    "apps": {
+        "account": {"models": ["src.aihttp.api.account.models"], "default_connection": "default"},
+    },
+    "use_tz": False,
+    "timezone": "UTC",
+}
+
 HOST = ""
 SECRET_KEY = ""

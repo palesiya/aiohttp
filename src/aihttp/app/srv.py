@@ -4,19 +4,21 @@ from aiohttp import web
 from aiohttp_jinja2 import setup as jinja_setup
 from src.log import initial_logging
 from src.aihttp.conf import settings
-from src.aihttp.web.home.views import HomeView
+from controller import controller_setup
+from tortoise.contrib.aiohttp import register_tortoise
+
 
 def create_app():
     initial_logging()
     logger = logging.getLogger(settings.LOGGER)
     app = web.Application(logger=logger)
-    app.router.add_route("GET",
-                         "/",
-                         HomeView)
-    jinja2_setup(
+    controller_setup(app, "src.aihttp.web.urls")
+    jinja_setup(
         app,
         loader=jinja2.FileSystemLoader(
-            list(settings.BASE_DIR.glob("**/web/**/templates"))
+            list(settings.BASE_DIR.glob("web/**/templates"))
         )
     )
+    register_tortoise(app, config=settings.DATABASE, generate_schemas=True)
+
     return app
