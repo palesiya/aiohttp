@@ -1,4 +1,4 @@
 from controller import Controller
 
 
-Controller.include("/account", "src.aihttp.api.account.urls")
+Controller.include("/account", "aihttp.api.account.urls")
