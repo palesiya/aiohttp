@@ -13,3 +13,13 @@ class Account(web.View):
         await user.save()
         return web.json_response({"uuid": user.uuid})
 
+
+class Auth(web.View):
+    async def post(self):
+        data = await self.request.json()
+        user = await User.get(username=data["username"])
+        if user.check_passwd(data["password"]):
+            return web.json_response({"msg": "ok"})
+        return web.json_response({"msg": "not found"}, status=401)
+
+

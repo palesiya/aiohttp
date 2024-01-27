@@ -32,9 +32,9 @@ loggers:
   dev:
     level: DEBUG
     handlers: [console, error_file, info_file]
-    propagate: False
+    #propagate: False
 
   prod:
     level: INFO
     handlers: [error_file, info_file]
-    propagate: False
+    #propagate: False
