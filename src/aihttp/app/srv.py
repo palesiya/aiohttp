@@ -12,7 +12,7 @@ def create_app():
     initial_logging()
     logger = logging.getLogger(settings.LOGGER)
     app = web.Application(logger=logger)
-    controller_setup(app, "src.aihttp.web.urls")
+    controller_setup(app, "aihttp.web.urls")
     jinja_setup(
         app,
         loader=jinja2.FileSystemLoader(
