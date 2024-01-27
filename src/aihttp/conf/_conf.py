@@ -8,7 +8,7 @@ if DEBUG:
 else:
     LOGGER = "prod"
 
-DATABASE = DB_CONFIG = {
+DATABASE = {
     "connections": {
         "default": {
             "engine": "tortoise.backends.asyncpg",
@@ -22,7 +22,8 @@ DATABASE = DB_CONFIG = {
         }
     },
     "apps": {
-        "account": {"models": ["src.aihttp.api.account.models"], "default_connection": "default"},
+        "account": {"models": ["src.aihttp.api.account.models", "aerich.models"],
+                    "default_connection": "default"},
     },
     "use_tz": False,
     "timezone": "UTC",

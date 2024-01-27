@@ -3,7 +3,6 @@ import os
 from src.aihttp.conf import settings
 from tortoise import models, fields
 from hashlib import sha3_256
-import asyncio
 
 
 class BaseModel(models.Model):
@@ -22,10 +21,10 @@ class BaseModel(models.Model):
 class User(BaseModel):
     username = fields.CharField(max_length=25, index=True, unique=True)
     email = fields.CharField(max_length=50, unique=True)
-    password = fields.BinaryField()
+    password = fields.TextField()
     is_active = fields.BooleanField(default=False)
     is_admin = fields.BooleanField(default=False)
-
+    refresh = fields.TextField(null=True)
     def __str__(self):
         return self.username
 
