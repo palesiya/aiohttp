@@ -33,7 +33,6 @@ pytest-asyncio = "^0.23.3"
 
 
 
-
 [tool.aerich]
 tortoise_orm = "src.aihttp.conf._conf.DATABASE"
 location = "./migrations"

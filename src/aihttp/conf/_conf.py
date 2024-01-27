@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent.absolute()
@@ -13,11 +14,11 @@ DATABASE = {
         "default": {
             "engine": "tortoise.backends.asyncpg",
             "credentials": {
-                "host": "@format {this.DB_HOST}",
-                "port": "@format {this.DB_PORT}",
-                "user": "@format {this.DB_USER}",
-                "password": "@format {this.DB_PASS}",
-                "database": "@format {this.DB_NAME}",
+                "host": os.getenv("DB_HOST"),
+                "port": int(os.getenv("DB_PORT")),
+                "user": os.getenv("DB_USER"),
+                "password": os.getenv("DB_PASS"),
+                "database": os.getenv("DB_NAME"),
             },
         }
     },
