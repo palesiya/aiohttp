@@ -1,25 +1,29 @@
 [tool.poetry]
-name = "aihttp"
+name = "arest"
 version = "0.1.0"
 description = ""
-authors = ["Alesya Pavluchenko <anrx16@gmail.com>"]
+authors = ["ilia <kavaleuilia@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "aihttp", from = "src/" },
-    { include = "log", from = "src/" },
+    { include = 'arest', from = 'src/'},
+    { include = 'log', from = 'src/'},
 ]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 aiohttp = "^3.9.1"
 tortoise-orm = "^0.20.0"
+pyyaml = "^6.0.1"
 asyncpg = "^0.29.0"
 aiohttp-jinja2 = "^1.6"
 dynaconf = "^3.2.4"
-pyyaml = "^6.0.1"
 controller = {git = "https://gitlab.com/xolloo/aiohttp_controller.git"}
+aiohttp-cors = "^0.7.0"
 aerich = "^0.7.2"
+pyjwt = "^2.8.0"
+aiosmtplib = "^3.0.1"
+aiofiles = "^23.2.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -32,9 +36,8 @@ pytest = "^7.4.4"
 pytest-asyncio = "^0.23.3"
 
 
-
 [tool.aerich]
-tortoise_orm = "src.aihttp.conf._conf.DATABASE"
+tortoise_orm = "arest.conf._conf.DATABASE"
 location = "./migrations"
 src_folder = "./."
 [build-system]

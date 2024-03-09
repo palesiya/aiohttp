@@ -4,37 +4,33 @@ formatters:
   simple:
     format: '%(asctime)s [%(levelname)s] %(funcName)s():%(lineno)d - %(message)s'
   json:
-    ():  src.log.formatters.JsonFormatter
+    (): src.log.formatters.JsonFormatter
 
 handlers:
   console:
     class: logging.StreamHandler
     formatter: simple
     stream: ext://sys.stdout
-
   info_file:
     class: logging.handlers.RotatingFileHandler
-    formatter: json
     level: INFO
-    filename: .log/info.log
-    maxBytes: 1024
+    formatter: json
+    filename: info.log
+    maxBytes: 102400
     backupCount: 3
-
   error_file:
     class: logging.handlers.RotatingFileHandler
     level: ERROR
     formatter: json
-    filename: .log/error.log
+    filename: info.log
     maxBytes: 1024
     backupCount: 3
-
 loggers:
   dev:
     level: DEBUG
-    handlers: [console, error_file, info_file]
-    #propagate: False
-
+    handlers: [console, info_file, error_file]
+#    propagate: False
   prod:
     level: INFO
-    handlers: [error_file, info_file]
-    #propagate: False
+    handlers: [info_file, error_file]
+#    propagate: False
